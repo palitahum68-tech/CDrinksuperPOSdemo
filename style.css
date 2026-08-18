@@ -4,7 +4,6 @@ body {
     margin: 0;
     padding: 30px;
 }
-
 .container {
     max-width: 900px;
     margin: auto;
@@ -21,7 +20,6 @@ h1 {
 
 
 /* เมนู */
-
 .menu {
     background: white;
     padding: 20px;
@@ -38,7 +36,9 @@ h1 {
     cursor: pointer;
 }
 /* เมนูเพิ่ม */
-
+.Add:hover {
+    opacity: 0.8;
+}
 .Add {
     background: white;
     padding: 20px;
@@ -55,9 +55,7 @@ h1 {
     cursor: pointer;
 }
 
-
 /* ตะกร้า */
-
 .cart {
     background: white;
     padding: 20px;
@@ -87,8 +85,7 @@ input {
     min-height: 45px;
 }
 
-
-
+/* เช็คบิล */
 .pay-button {
     width: 100%;
     padding: 15px;
