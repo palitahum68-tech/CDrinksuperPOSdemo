@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>C Drink POS Demo</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🥤 C Drink POS</h1>
+
+<!-- เมนู -->
+        <div class="menu">
+
+            <h2>เมนู</h2>
+
+            <button onclick="addToCart('ชาไทย', 45)">
+                🧋 ชาไทย
+                <br>
+                <strong>45 บาท</strong>
+            </button>
+
+            <button onclick="addToCart('ชาเขียว', 45)">
+                🍵 ชาเขียว
+                <br>
+                <strong>45 บาท</strong>
+            </button>
+
+            <button onclick="addToCart('กาแฟ', 50)">
+                ☕ กาแฟ
+                <br>
+                <strong>50 บาท</strong>
+            </button>
+
+            <button onclick="addToCart('โกโก้', 50)">
+                🍫 โกโก้
+                <br>
+                <strong>50 บาท</strong>
+            </button>
+
+        </div>
+
+        <!-- รายการขาย -->
+        <div class="cart">
+
+            <h2>รายการขาย</h2>
+
+            <div id="cart">
+                ยังไม่มีสินค้า
+            </div>
+
+            <hr>
+
+            <h3>
+                รวม:
+                <span id="total">0</span>
+                บาท
+            </h3>
+
+
+            <!-- รับเงิน -->
+            <h3>รับเงิน</h3>
+
+            <div class="money-display">
+                <span id="money">0</span>
+                บาท
+            </div>
+
+
+            <!-- ปุ่มแบงก์ -->
+            <div class="bank-buttons">
+
+                <button onclick="addMoney(20)">
+                    20
+                </button>
+
+                <button onclick="addMoney(50)">
+                    50
+                </button>
+
+                <button onclick="addMoney(100)">
+                    100
+                </button>
+
+                <button onclick="addMoney(500)">
+                    500
+                </button>
+
+                <button onclick="addMoney(1000)">
+                    1,000
+                </button>
+
+            </div>
+
+
+            <!-- แป้นตัวเลข -->
+            <div class="number-pad">
+
+                <button onclick="pressNumber(1)">1</button>
+                <button onclick="pressNumber(2)">2</button>
+                <button onclick="pressNumber(3)">3</button>
+
+                <button onclick="pressNumber(4)">4</button>
+                <button onclick="pressNumber(5)">5</button>
+                <button onclick="pressNumber(6)">6</button>
+
+                <button onclick="pressNumber(7)">7</button>
+                <button onclick="pressNumber(8)">8</button>
+                <button onclick="pressNumber(9)">9</button>
+
+                <button onclick="clearMoney()">C</button>
+                <button onclick="pressNumber(0)">0</button>
+                <button onclick="deleteNumber()">⌫</button>
+
+            </div>
+
+
+            <!-- เงินทอน -->
+            <h3>
+                เงินทอน:
+                <span id="change">0</span>
+                บาท
+            </h3>
+
+
+            <!-- ชำระเงิน -->
+            <button
+                    class="pay-button"
+                    onclick="payment()">
+                💰 ชำระเงิน
+            </button>
+
+        </div>
+
+
+    <div class="pos">
+        <!-- =============================== -->
+        <!-- Order & End of Day Summary -->
+        <!-- =============================== -->
+
+        <div class="daily-summary">
+
+            <div>
+                <strong>Order:</strong>
+                <span id="orderNumber">001</span>
+            </div>
+
+            <div>
+                <strong>เวลา:</strong>
+                <span id="orderTime">--:--:--</span>
+            </div>
+
+            <div>
+                <strong>จำนวน Order:</strong>
+                <span id="orderCount">0</span>
+            </div>
+
+            <div>
+                <strong>ยอดขายวันนี้:</strong>
+                <span id="dailyTotal">0</span>
+                บาท
+            </div>
+
+            <div>
+                <strong>รับเงินวันนี้:</strong>
+                <span id="dailyReceived">0</span>
+                บาท
+            </div>
+
+        </div>
+
+        <button
+                class="clear-day-button"
+                onclick="clearDailySales()">
+            🗑️ Clear ยอด / เริ่มวันใหม่
+        </button>
+    </div>
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
