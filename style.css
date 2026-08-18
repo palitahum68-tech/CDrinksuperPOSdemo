@@ -37,6 +37,23 @@ h1 {
     border-radius: 10px;
     cursor: pointer;
 }
+/* เมนูเพิ่ม */
+
+.Add {
+    background: white;
+    padding: 20px;
+    width: 50%;
+    border-radius: 10px;
+}
+
+.Add button {
+    width: 180px;
+    padding: 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
 
 
 /* ตะกร้า */
