@@ -54,13 +54,20 @@ const MAX_MONEY = 50000;
 
 
 // ===============================
-// เพิ่มสินค้า
+// เพิ่มสินค้า และเพิ่มหวาน
 // ===============================
 
 function addToCart(name, price) {
 
-    // ตรวจสอบว่าสินค้ามีอยู่ในตะกร้าหรือยัง
-    let existingItem = cart.find(item => item.name === name);
+    // ใช้ชื่อสินค้า + ระดับความหวานเป็นรายการเดียวกัน
+    let itemName = name;
+
+    if (selectedSugar) {
+        itemName += " — " + selectedSugar;
+    }
+
+    // ตรวจสอบว่าสินค้า + ความหวานนี้มีอยู่ในตะกร้าหรือยัง
+    let existingItem = cart.find(item => item.name === itemName);
 
     if (existingItem) {
 
@@ -71,7 +78,7 @@ function addToCart(name, price) {
 
         // ถ้ายังไม่มี เพิ่มสินค้าใหม่
         cart.push({
-            name: name,
+            name: itemName,
             price: price,
             quantity: 1
         });
@@ -79,8 +86,10 @@ function addToCart(name, price) {
 
     // แสดงรายการใหม่
     renderCart();
-}
 
+    // ล้างระดับความหวาน หลังเพิ่มสินค้า
+    selectedSugar = "";
+}
 
 // ===============================
 // ลบสินค้า
@@ -202,6 +211,24 @@ function pressNumber(number) {
 }
 
 
+
+// ===============================
+// เลือกระดับความหวาน
+// ===============================
+
+let selectedSugar = "";
+
+function addSugar(level) {
+    selectedSugar = level;
+    console.log("เลือกระดับความหวาน:", selectedSugar);
+
+// อัปเดตหน้าจอ
+    updateMoneyDisplay();
+}
+
+
+
+
 // ===============================
 // กดปุ่มแบงก์
 // ===============================
@@ -233,6 +260,14 @@ function addMoney(amount) {
     // อัปเดตหน้าจอ
     updateMoneyDisplay();
 }
+
+
+
+
+
+
+
+
 
 
 // ===============================
@@ -373,25 +408,27 @@ function payment() {
     // แสดงใบเสร็จชั่วคราว
     // ========================================
 
+    let orderDetails = cart.map(item =>
+        item.name + " x " + item.quantity
+    ).join("\n");
+
     alert(
-        "ชำระเงินเรียบร้อย\n\n" +
+        "ชำระเงินเรียบร้อย\n" +
 
         "Order: " +
         String(orderNumber).padStart(3, "0") +
-        "\n" +
-
+        "\n\n" +
+        orderDetails +
+        "\n\n" +
         "เวลา: " +
         orderTime +
         "\n" +
-
         "ยอดรวม: " +
         total.toLocaleString("th-TH") +
         " บาท\n" +
-
         "รับเงิน: " +
         moneyReceived.toLocaleString("th-TH") +
         " บาท\n" +
-
         "เงินทอน: " +
         change.toLocaleString("th-TH") +
         " บาท"
